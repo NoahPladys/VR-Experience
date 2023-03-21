@@ -61,5 +61,5 @@ crashlytics-build.properties
 #Any zips
 *.zip
 
-#ML-Agents example folder
-/ml-agents
+#Any zips
+*.mp4
