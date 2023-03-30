@@ -1,0 +1,29 @@
+{
+    "AgentBehaviour": {
+        "checkpoints": [
+            {
+                "steps": 202653,
+                "file_path": "results\\JumpAgent--resume\\AgentBehaviour\\AgentBehaviour-202653.onnx",
+                "reward": -0.04999999888241291,
+                "creation_time": 1680016789.093157,
+                "auxillary_file_paths": [
+                    "results\\JumpAgent--resume\\AgentBehaviour\\AgentBehaviour-202653.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 202653,
+            "file_path": "results\\JumpAgent--resume\\AgentBehaviour.onnx",
+            "reward": -0.04999999888241291,
+            "creation_time": 1680016789.093157,
+            "auxillary_file_paths": [
+                "results\\JumpAgent--resume\\AgentBehaviour\\AgentBehaviour-202653.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.7.1+cu110"
+    }
+}
