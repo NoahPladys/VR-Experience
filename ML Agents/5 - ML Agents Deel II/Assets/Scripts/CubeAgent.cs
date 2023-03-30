@@ -17,9 +17,9 @@ public class CubeAgent : Agent
         Target.gameObject.SetActive(true);
         targetPickedUp = false;
         // reset de positie en orientatie als de agent gevallen is
-        if (this.transform.localPosition.y < 0)
+        if (transform.localPosition.y < 0)
         {
-            this.transform.localPosition = new Vector3(-6, 0.5f, 0); this.transform.localRotation = Quaternion.identity;
+            transform.localPosition = new Vector3(-6, 0.5f, 0); transform.localRotation = Quaternion.identity;
         }
         
         // verplaats de target naar een nieuwe willekeurige locatie 
@@ -29,7 +29,9 @@ public class CubeAgent : Agent
     public override void CollectObservations(VectorSensor sensor)
     {
         // Agent positie
-        sensor.AddObservation(this.transform.localPosition);
+        sensor.AddObservation(transform.localPosition);
+        sensor.AddObservation(TargetZone.localPosition);
+        sensor.AddObservation(Vector3.Distance(transform.localPosition, TargetZone.localPosition));
     }
 
     public float speedMultiplier = 0.1f;
@@ -45,28 +47,27 @@ public class CubeAgent : Agent
         transform.Rotate(0.0f, rotationMultiplier * actionBuffers.ContinuousActions[1], 0.0f);
 
         // Beloningen
-        float distanceToTarget = Vector3.Distance(this.transform.localPosition, Target.localPosition);
+        float distanceToTarget = Vector3.Distance(transform.localPosition, Target.localPosition);
 
         // target bereikt
         if (!targetPickedUp && distanceToTarget < 1.42f)
         {
             Target.gameObject.SetActive(false);
             targetPickedUp = true;
-            SetReward(1.0f);
+            AddReward(0.4f);
         }
-
-        float distanceToTargetZone = Vector3.Distance(this.transform.localPosition, TargetZone.localPosition);
             
         // Terug bij TargetZone
-        if (targetPickedUp && this.transform.localPosition.x < -5)
+        if (targetPickedUp && transform.localPosition.x < -5)
         {
-            SetReward(1.0f);
+            AddReward(0.6f);
             EndEpisode();
         }
 
         // Van het platform gevallen?
-        else if (this.transform.localPosition.y < 0)
+        if (transform.localPosition.y < 0)
         {
+            SetReward(0);
             EndEpisode();
         }
     }
