@@ -21,7 +21,7 @@ public class ObstacleSpawnerScript : MonoBehaviour
         if(timeSinceLastSpawn >= TimeBetweenSpawns && SpawnCount > 0)
         {
             Instantiate(Obstacle, transform.position, transform.rotation);
-            timeSinceLastSpawn -= TimeBetweenSpawns;
+            timeSinceLastSpawn = 0;
             SpawnCount--;
         }
         timeSinceLastSpawn += Time.deltaTime;
