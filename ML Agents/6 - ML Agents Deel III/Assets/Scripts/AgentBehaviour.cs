@@ -34,13 +34,13 @@ public class AgentBehaviour : Agent
         {
             transform.GetComponent<Rigidbody>().AddRelativeForce(Vector3.up * JumpForce);
             canJump = false;
-            AddReward(-0.01f);
+            AddReward(-0.05f);
         }
     }
 
     public override void OnEpisodeBegin()
     {
-        SetReward(1.05f);
+        SetReward(1.25f);
         transform.localPosition = new Vector3(0, 0.5f, 0);
         transform.localEulerAngles = new Vector3(0, -90, 0);
 
